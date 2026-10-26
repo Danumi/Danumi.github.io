@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Zurück zur Finanzapp</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 32px 16px; background: #f4f7f6; color: #1c2b28; text-align: center; }
+  @media (prefers-color-scheme: dark) { body { background: #111816; color: #e2ece9; } }
+  a.knopf { display: inline-block; margin-top: 24px; padding: 16px 28px; border-radius: 28px; background: #1B5E52; color: #fff; text-decoration: none; font-size: 18px; }
+  p { max-width: 28em; margin: 12px auto; line-height: 1.5; }
+</style>
+</head>
+<body>
+<!--
+  Weiterleitung nach der Bank-Freigabe (Enable Banking) zurück in die Finanzapp.
+  Diese Seite speichert nichts und lädt nichts nach. Sie reicht nur die Antwort der Bank
+  (einen einmaligen Code) an die App auf dem Handy weiter.
+-->
+<h1>Fast geschafft</h1>
+<p id="text">Die Bank hat geantwortet. Tippe auf den Knopf, falls sich die Finanzapp nicht von selbst öffnet.</p>
+<a class="knopf" id="zurueck" href="#">Zurück zur Finanzapp</a>
+<script>
+  var abfrage = window.location.search.substring(1);
+  var ziel = "intent://callback" + (abfrage ? "?" + abfrage : "") +
+      "#Intent;scheme=finanzapp;package=at.danumi.finanzapp;end";
+  document.getElementById("zurueck").href = ziel;
+  if (abfrage) {
+    window.location.replace(ziel);
+  } else {
+    document.getElementById("text").textContent = "Diese Seite wird nur nach der Bank-Freigabe gebraucht.";
+  }
+</script>
+</body>
+</html>

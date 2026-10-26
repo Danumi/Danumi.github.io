@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "at.danumi.finanzapp",
+      "sha256_cert_fingerprints": [
+        "67:4E:16:52:9D:45:6E:5A:FB:CB:FC:7A:65:C4:05:F0:72:CE:A9:C5:FF:29:31:33:6A:34:52:8B:96:16:F6:65"
+      ]
+    }
+  }
+]
